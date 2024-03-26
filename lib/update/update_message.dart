@@ -22,6 +22,7 @@ Misal anda beli Beli source code di Slebew CORPORATION anda lapor dahulu di sleb
 
 import 'dart:async';
 
+import 'package:system_info_fetch/system_info_fetch.dart';
 import 'package:telegram_client/telegram_client/telegram_client.dart';
 
 FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, required UpdateTelegramClient updateTelegramClient}) async {
@@ -39,7 +40,6 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
     isOutgoing = msg["is_outgoing"];
   }
   if (msg["chat"] is Map == false) {
-    
     return null;
   }
   bool isAdmin = false;
@@ -51,7 +51,7 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
   if (isOutgoing) {
     isAdmin = true;
   } else {
-    if (["private"].contains(chat_type)) {
+    if (updateTelegramClient.telegramClientData.is_bot) {
       isAdmin = true;
     }
   }
@@ -88,6 +88,17 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
   if (RegExp(r"^((/)?ping)$", caseSensitive: false).hasMatch(caption_msg)) {
     return await tg.request(
       parameters: {"@type": "sendMessage", "chat_id": chat_id, "text": "PONG"},
+      telegramClientData: updateTelegramClient.telegramClientData,
+    );
+  }
+
+  if (RegExp(r"^((/)?systeminfo|info|env|neofetch|pfetch)$", caseSensitive: false).hasMatch(caption_msg)) {
+    return await tg.request(
+      parameters: {
+        "@type": "sendMessage",
+        "chat_id": chat_id,
+        "text": "SystemInfo: ${SystemInfoFetch.toMessage()}",
+      },
       telegramClientData: updateTelegramClient.telegramClientData,
     );
   }

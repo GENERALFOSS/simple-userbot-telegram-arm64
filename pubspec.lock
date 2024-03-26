@@ -457,6 +457,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  system_info_fetch:
+    dependency: "direct main"
+    description:
+      name: system_info_fetch
+      sha256: "5751df032afdb55a19408c1cb21c9d3fb213f0342dc8404b0a7c3b3d7bc736fb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.13"
   telegram_client:
     dependency: "direct main"
     description:
