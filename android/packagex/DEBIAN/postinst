@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+ln -s /usr/share/azka-userbot-telegram/userbot_telegram /usr/bin/azka-userbot-telegram
+chmod +x /usr/bin/azka-userbot-telegram
+exit 0

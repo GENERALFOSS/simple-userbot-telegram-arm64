@@ -1,0 +1,10 @@
+Maintainer: "azkadev <azkadev@noemail.com>"
+Package: azka-userbot-telegram
+Version: 0.0.0
+Section: x11
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 0
+Description: "GENERAL FOSS userbot telegram simple by GENERAL FOSS dev."
+Homepage: "https://github.com/generalfoss/userbot_telegram.git"

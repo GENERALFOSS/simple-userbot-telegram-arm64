@@ -21,4 +21,33 @@ dependencies:
 
 dev_dependencies:
   lints: ^2.1.0
+  msix: ^3.16.7
   test: ^1.24.0
+
+packagex:
+  name: userbot_telegram
+  dart_target: userbot_telegram
+  flutter_target: main
+  dart_name: userbot_telegram
+  flutter_name: userbot_telegram
+  is_without_platform_name: true
+  flutter_commands:
+    obfuscate: true
+    split-debug-info: "0.0.5"
+    build-name: "0.0.5"
+    build-number: 40
+    split-per-abi: true
+    no-tree-shake-icons: false
+
+  project_id: "azkadev.packagex"
+  github_username: azkadev
+  github_is_org: false
+  
+
+msix_config: 
+  display_name: userbot_telegram
+  install_certificate: false
+  # publisher_display_name: Azkadev
+  # identity_name: org.azkadev.azka_userbot_telegram
+  # msix_version: 0.0.0.0
+  # capabilities: internetClient, location, microphone, webcam

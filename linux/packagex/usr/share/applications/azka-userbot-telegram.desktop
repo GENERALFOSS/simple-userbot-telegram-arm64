@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.0.0
+Name=azka-userbot-telegram
+GenericName=General Application
+Exec=azka-userbot-telegram -- %u
+Categories=Music;Media;
+Keywords=Hello;World;Test;Application;
+StartupNotify=true
+
