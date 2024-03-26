@@ -39,6 +39,7 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
     isOutgoing = msg["is_outgoing"];
   }
   if (msg["chat"] is Map == false) {
+    
     return null;
   }
   bool isAdmin = false;
@@ -54,6 +55,7 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
       isAdmin = true;
     }
   }
+
   Map msg_from = msg["from"];
   Map msg_chat = msg["chat"];
 
@@ -67,7 +69,7 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
   if (isAdmin == false) {
     return;
   }
-  if (RegExp(r"^(me)", caseSensitive: false).hasMatch(caption_msg)) {
+  if (RegExp(r"^((/)?me)", caseSensitive: false).hasMatch(caption_msg)) {
     return await tg.request(
       parameters: {
         "@type": "sendMessage",
@@ -77,26 +79,26 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
       telegramClientData: updateTelegramClient.telegramClientData,
     );
   }
-  if (RegExp(r"^(start)", caseSensitive: false).hasMatch(caption_msg)) {
+  if (RegExp(r"^((/)?start)", caseSensitive: false).hasMatch(caption_msg)) {
     return await tg.request(
       parameters: {"@type": "sendMessage", "chat_id": chat_id, "text": "Hai Saya robot"},
       telegramClientData: updateTelegramClient.telegramClientData,
     );
   }
-  if (RegExp(r"^(ping)$", caseSensitive: false).hasMatch(caption_msg)) {
+  if (RegExp(r"^((/)?ping)$", caseSensitive: false).hasMatch(caption_msg)) {
     return await tg.request(
       parameters: {"@type": "sendMessage", "chat_id": chat_id, "text": "PONG"},
       telegramClientData: updateTelegramClient.telegramClientData,
     );
   }
 
-  RegExp regExp_echo = RegExp(r"^((echo[ ]+)(.*))", caseSensitive: false);
+  RegExp regExp_echo = RegExp(r"^((/)?(echo[ ]+)(.*))", caseSensitive: false);
   if (regExp_echo.hasMatch(caption_msg)) {
     return await tg.request(
       parameters: {
         "@type": "sendMessage",
         "chat_id": chat_id,
-        "text": caption_msg.replaceAll(RegExp(r"^((echo[ ]+))", caseSensitive: false), ""),
+        "text": caption_msg.replaceAll(RegExp(r"^((/)?(echo[ ]+))", caseSensitive: false), ""),
       },
       telegramClientData: updateTelegramClient.telegramClientData,
     );

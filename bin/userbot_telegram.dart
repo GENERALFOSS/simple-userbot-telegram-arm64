@@ -251,6 +251,7 @@ GITHUB: https://github.com/generalfoss/userbot_telegram
 
         if (update["message"] is Map) {
           Map msg = update["message"];
+          // msg.clone().printPretty();
           await updateMessage(
             msg: msg,
             tg: tg,
