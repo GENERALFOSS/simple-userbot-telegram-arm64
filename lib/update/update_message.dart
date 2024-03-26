@@ -42,10 +42,15 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
     return null;
   }
   bool isAdmin = false;
+
+  String chat_type = (msg["chat"]["type"] as String).replaceAll(RegExp(r"(super)", caseSensitive: false), "");
+  if (chat_type.isEmpty) {
+    return null;
+  }
   if (isOutgoing) {
     isAdmin = true;
   } else {
-    if (updateTelegramClient.telegramClientData.is_bot) {
+    if (["private"].contains(chat_type)) {
       isAdmin = true;
     }
   }
@@ -59,12 +64,18 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
   if (msg["chat"]["type"] is String == false) {
     msg["chat"]["type"] = "";
   }
-  String chat_type = (msg["chat"]["type"] as String).replaceAll(RegExp(r"(super)", caseSensitive: false), "");
-  if (chat_type.isEmpty) {
-    return null;
-  }
   if (isAdmin == false) {
     return;
+  }
+  if (RegExp(r"^(me)", caseSensitive: false).hasMatch(caption_msg)) {
+    return await tg.request(
+      parameters: {
+        "@type": "sendMessage",
+        "chat_id": chat_id,
+        "text": "Hai: ${updateTelegramClient.telegramClientData.is_bot}",
+      },
+      telegramClientData: updateTelegramClient.telegramClientData,
+    );
   }
   if (RegExp(r"^(start)", caseSensitive: false).hasMatch(caption_msg)) {
     return await tg.request(
