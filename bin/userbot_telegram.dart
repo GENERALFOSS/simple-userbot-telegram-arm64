@@ -179,8 +179,8 @@ GITHUB: https://github.com/generalfoss/userbot_telegram
                   res = await tg.invoke(
                     // method: "setAuthenticationPhoneNumber",
                     parameters: {
-                      "@type": "checkAuthenticationTokenBot",
-                      "token_bot": phone_number_or_token_bot_procces,
+                      "@type": "checkAuthenticationBotToken",
+                      "token": phone_number_or_token_bot_procces,
                     },
                     telegramClientData: updateTelegramClient.telegramClientData,
                   );
