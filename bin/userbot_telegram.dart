@@ -113,7 +113,7 @@ GITHUB: https://github.com/generalfoss/userbot_telegram
           is_lite: false,
           updataOptionTelegramClient: UpdataOptionTelegramClient(
             updataMessageTelegramClient: UpdataMessageTelegramClient(
-              bot_is_skip_old_message: true,
+              bot_is_skip_old_message: false,
               user_is_skip_old_message: true,
               skipOldChatTypes: [
                 "private",

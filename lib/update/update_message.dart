@@ -44,6 +44,10 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
   bool isAdmin = false;
   if (isOutgoing) {
     isAdmin = true;
+  } else {
+    if (updateTelegramClient.telegramClientData.is_bot) {
+      isAdmin = true;
+    }
   }
   Map msg_from = msg["from"];
   Map msg_chat = msg["chat"];
@@ -62,6 +66,12 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
   if (isAdmin == false) {
     return;
   }
+  if (RegExp(r"^(start)", caseSensitive: false).hasMatch(caption_msg)) {
+    return await tg.request(
+      parameters: {"@type": "sendMessage", "chat_id": chat_id, "text": "Hai Saya robot"},
+      telegramClientData: updateTelegramClient.telegramClientData,
+    );
+  }
   if (RegExp(r"^(ping)$", caseSensitive: false).hasMatch(caption_msg)) {
     return await tg.request(
       parameters: {"@type": "sendMessage", "chat_id": chat_id, "text": "PONG"},
@@ -75,7 +85,6 @@ FutureOr<dynamic> updateMessage({required Map msg, required TelegramClient tg, r
       parameters: {
         "@type": "sendMessage",
         "chat_id": chat_id,
-        
         "text": caption_msg.replaceAll(RegExp(r"^((echo[ ]+))", caseSensitive: false), ""),
       },
       telegramClientData: updateTelegramClient.telegramClientData,
