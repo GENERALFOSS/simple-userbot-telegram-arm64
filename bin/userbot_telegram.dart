@@ -164,21 +164,36 @@ GITHUB: https://github.com/generalfoss/userbot_telegram
             if (authStateType == "authorizationStateWaitPhoneNumber") {
               while (true) {
                 await Future.delayed(Duration(milliseconds: 10));
-                String phone_number_procces = logger.prompt("❔️ Nomor Ponsel", defaultValue: "+628888888888: ", hidden: false).trim().replaceAll(RegExp(r"( |\+)", caseSensitive: false), "");
-                if (phone_number_procces.isEmpty) {
+                String phone_number_or_token_bot_procces = logger.prompt("❔️ Nomor Ponsel / Token Bot @botfather", defaultValue: "+628888888888 / 123456789:abcdfghijklmnopqrstuvwxyz ", hidden: false).trim().replaceAll(
+                      RegExp(r"( |\+)", caseSensitive: false),
+                      "",
+                    );
+                if (phone_number_or_token_bot_procces.isEmpty) {
                   logger.err("Tolong isi data dengan benar!");
                   continue;
                 }
-                logger.info("Request Code: ${phone_number_procces}");
-                var res = await tg.invoke(
-                  // method: "setAuthenticationPhoneNumber",
-                  parameters: {
-                    "@type": "setAuthenticationPhoneNumber",
-                    "phone_number": phone_number_procces,
-                  },
-                  telegramClientData: updateTelegramClient.telegramClientData,
-                );
+                logger.info("Request Code: ${phone_number_or_token_bot_procces}");
+                var res = {};
 
+                if (RegExp("", caseSensitive: false).hasMatch(phone_number_or_token_bot_procces)) {
+                  res = await tg.invoke(
+                    // method: "setAuthenticationPhoneNumber",
+                    parameters: {
+                      "@type": "checkAuthenticationTokenBot",
+                      "token_bot": phone_number_or_token_bot_procces,
+                    },
+                    telegramClientData: updateTelegramClient.telegramClientData,
+                  );
+                } else {
+                  res = await tg.invoke(
+                    // method: "setAuthenticationPhoneNumber",
+                    parameters: {
+                      "@type": "setAuthenticationPhoneNumber",
+                      "phone_number": phone_number_or_token_bot_procces,
+                    },
+                    telegramClientData: updateTelegramClient.telegramClientData,
+                  );
+                }
                 if (res["@type"] == "error") {
                   logger.err(jsonToMessage(res, jsonFullMedia: {}));
                   continue;
