@@ -157,10 +157,10 @@ packages:
     dependency: "direct main"
     description:
       name: general_lib
-      sha256: "01ac57e1f884cc17cf6c733508f4a4e9e9e24ebe9bbf0a6251a810c68ceac1d3"
+      sha256: "97e67e9379cfdeb362dc727ecc2790f33baa125ec0468e9a2d69d317ef0cb998"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.27"
+    version: "0.0.32"
   get_it:
     dependency: transitive
     description:
@@ -325,10 +325,10 @@ packages:
     dependency: "direct main"
     description:
       name: packagex
-      sha256: "96f1b7773eb2199f5ab47abbc67d706e8636d8e17551e9dc19630c650c9078de"
+      sha256: e8df6e41bde31823282864d84cd342311cb0aabe079b111a6880551d4a58a8f9
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.44"
+    version: "0.0.50"
   path:
     dependency: "direct main"
     description:
@@ -461,18 +461,18 @@ packages:
     dependency: "direct main"
     description:
       name: system_info_fetch
-      sha256: "5751df032afdb55a19408c1cb21c9d3fb213f0342dc8404b0a7c3b3d7bc736fb"
+      sha256: "264a33576e612888f640d625631fef9f2daf8cc41078a1138adbd75510771d22"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.13"
+    version: "0.0.14"
   telegram_client:
     dependency: "direct main"
     description:
       name: telegram_client
-      sha256: "3786d0babf275429c4b00f1ad2c0aa084759b5633c5337a840c77be83f00d59a"
+      sha256: "7e7a3c823907fcc69f0090d0cb15b5f8e62b87e6360c4c2d73f402206d84b08e"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.0"
+    version: "0.8.2"
   term_glyph:
     dependency: transitive
     description:

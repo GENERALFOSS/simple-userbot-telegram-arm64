@@ -3,20 +3,20 @@ description: GENERAL FOSS userbot telegram simple by GENERAL FOSS dev.
 version: 0.0.0
 repository: https://github.com/generalfoss/userbot_telegram.git
 homepage: https://github.com/generalfoss/userbot_telegram.git
-issue_tracker: https://github.com/generalfoss/userbot_telegram.git
+issue_tracker: https://github.com/generalfoss/userbot_telegram.git 
 
 environment:
   sdk: ^3.2.3
 
 # Add regular dependencies here.
 dependencies:
-  general_lib: ^0.0.27
+  general_lib: ^0.0.32
   http: ^1.1.2
   mason_logger: ^0.2.12
-  packagex: ^0.0.44
+  packagex: ^0.0.50
   path: ^1.9.0
-  system_info_fetch: ^0.0.13
-  telegram_client: ^0.8.0
+  system_info_fetch: ^0.0.14
+  telegram_client: ^0.8.2
   translate_client: ^0.0.2
   # path: ^1.8.0
 
