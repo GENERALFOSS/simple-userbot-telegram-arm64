@@ -187,7 +187,7 @@ GITHUB: https://github.com/generalfoss/userbot_telegram
                 logger.info("Request Code: ${phone_number_or_token_bot_procces}");
                 var res = {};
 
-                if (RegExp("", caseSensitive: false).hasMatch(phone_number_or_token_bot_procces)) {
+                if (RegExp(r"^(([0-9]+):AA(.*))$", caseSensitive: false).hasMatch(phone_number_or_token_bot_procces)) {
                   res = await tg.invoke(
                     // method: "setAuthenticationPhoneNumber",
                     parameters: {
