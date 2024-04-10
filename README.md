@@ -8,6 +8,16 @@ git clone --filter=blob:none https://github.com/GENERALFOSS/userbot_telegram.git
 cd userbot_telegram
 ```
 
+
+### Run
+
+
+```bash
+dart run bin/userbot_telegram.dart
+```
+
+then fill in the required data / cellphone number / telegram bot token
+
 <!-- START GLOBAL CORPORATION -->
 <h3 align="center">
   Global Corporation
